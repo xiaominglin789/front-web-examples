@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片懒加载</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            width: 375px;
+            margin: 0 auto;
+        }
+        ul {
+            list-style: none;
+        }
+        ul img {
+            margin-top: 2px;
+            width:375px;
+            height:200px;
+            background-color:#eee;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <ul class="imgs-box"></ul>
+
+    <script>
+        (function() {
+            var urls = [
+                "https://picsum.photos/375/200?random=1",
+                "https://picsum.photos/375/200?random=2",
+                "https://picsum.photos/375/200?random=3",
+                "https://picsum.photos/375/200?random=4",
+                "https://picsum.photos/375/200?random=5",
+                "https://picsum.photos/375/200?random=6",
+                "https://picsum.photos/375/200?random=7",
+                "https://picsum.photos/375/200?random=8",
+                "https://picsum.photos/375/200?random=9",
+                "https://picsum.photos/375/200?random=10",
+                "https://picsum.photos/375/200?random=11",
+                "https://picsum.photos/375/200?random=12",
+                "https://picsum.photos/375/200?random=13",
+                "https://picsum.photos/375/200?random=14",
+                "https://picsum.photos/375/200?random=15",
+                "https://picsum.photos/375/200?random=16"
+            ];
+            var parant = document.querySelector(".imgs-box");
+            var imgList = null;
+            var clientH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            var timer = null;
+            var virtualImgs = [];
+
+            function initBefore() {
+                var liTemplateStr = "";
+                for(var i=0; i < urls.length; i++) {
+                    liTemplateStr+= '<img class="list-img" data-img=\"'+ urls[i] +'\">';
+                }
+
+                parant.innerHTML += liTemplateStr;
+            }
+
+            function lazyload(imglist, virtualImgs) {
+                var hTop = document.documentElement.scrollTop || document.body.scrollTop;
+                
+                var temp = null;
+                var count = 0;
+                for (var i=count; i<imgList.length; i++) {
+                    temp = imgList[i];
+                    
+                    if (temp.offsetTop < clientH + hTop) {
+                        console.log("ok");
+                        // 可视区滚过的区域和可视区内，显示图片
+                        
+                        if (imgList[i].getAttribute("data-img")) {
+                            imgList[i].src = virtualImgs[i].src || imgList[i].getAttribute("data-img");
+                            imgList[i].removeAttribute("data-img");
+                            count++;
+                        }
+                    }
+                }
+            }
+
+            function initVirtualImgs(imgList) {
+                var temp = null;
+                imgList.forEach(child => {
+                    temp = new Image();
+                    temp.src = child;
+                    virtualImgs.push(temp);
+                });
+                temp = null;
+            }
+
+            function init() {
+                if (!imgList) {
+                    initVirtualImgs(urls);
+                    imgList = document.querySelectorAll(".list-img");
+                }
+
+                if (imgList) {
+                    // 虚拟img
+                    window.onload = window.onscroll = function (e) {
+                        lazyload(imgList, virtualImgs);
+                    };
+                }
+            }
+
+            // 执行
+            initBefore();
+            init();
+        })();
+    </script>
+</body>
+</html>
