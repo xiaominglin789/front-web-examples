@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瀑布流</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html,body{width:100%; min-height:100%;}
+        .imgs-box {
+            width: 360px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .imgs-box li {
+            position: absolute;
+            list-style: none;
+            padding-top: 1px;
+        }
+        .list-img {
+            display: block;
+            width: 100%;
+        }
+        /* .imgs-box-waterfall {
+            columns: 3;
+            column-gap: 1px;
+        } */
+    </style>
+</head>
+<body>
+    <ul class="imgs-box"></ul>
+
+    <script src="./water-fall.js"></script>
+    <script>
+        (function(document) {
+            /** 地址数组 */
+            var urls = [
+                "https://picsum.photos/120/80?random=1",
+                "https://picsum.photos/120/160?random=2",
+                "https://picsum.photos/120/100?random=3",
+                "https://picsum.photos/220/170?random=4",
+                "https://picsum.photos/120/240?random=5",
+                "https://picsum.photos/120/160?random=6",
+                "https://picsum.photos/120/200?random=7",
+                "https://picsum.photos/120/170?random=8",
+                "https://picsum.photos/120/200?random=9",
+                "https://picsum.photos/120/120?random=10",
+                "https://picsum.photos/120/225?random=11",
+                "https://picsum.photos/120/180?random=12",
+                "https://picsum.photos/120/120?random=13",
+                "https://picsum.photos/120/114?random=14",
+                "https://picsum.photos/120/100?random=15",
+                "https://picsum.photos/120/240?random=16"
+            ];
+            /** 父节点 */
+            var parant = document.querySelector(".imgs-box");
+            /** 实际图片节点数组 */
+            var imgList = null;
+            /** 可视区高度 */
+            var clientH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            /** 虚拟image对象数组 */
+            var virtualImgs = [];
+            /** 瀑布流对象 */
+            var wfall = null;
+
+            /** 懒加载处理 */
+            function lazyload(imglist, virtualImgs) {
+                var hTop = document.documentElement.scrollTop || document.body.scrollTop;
+                
+                var temp = null;
+                var count = 0;
+                for (var i=count; i<imgList.length; i++) {
+                    temp = imgList[i];
+                
+                    if (temp.offsetTop < clientH + hTop) {
+                        // 可视区滚过的区域和可视区内，显示图片
+                        if (imgList[i].getAttribute("data-img")) {
+                            imgList[i].src = virtualImgs[i].src || imgList[i].getAttribute("data-img");
+                            imgList[i].removeAttribute("data-img");
+                            count++;
+                        }
+                    }
+                }
+            }
+
+            function afterLoad() {
+                // 启动瀑布流
+                wfall = new Waterfall({
+                    parentClasName: "imgs-box",
+                    boxTag: 'li',
+                    column: 2,
+                    gap: 1
+                });
+            }
+
+            function initVirtualImgs(urls) {
+                // 虚拟图片生成器
+                var temp = null;
+                for (var x=0; x < urls.length; x++) {
+                    temp = new Image();
+                    temp.src = urls[x];
+                    virtualImgs.push(temp);
+                }
+                temp = null;
+            }
+
+            function beforeInit() {
+                var liTemplateStr = "";
+                for(var i=0; i < urls.length; i++) {
+                    liTemplateStr+= '<li><img class="list-img" data-img=\"'+ urls[i] +'\"></li>';
+                }
+
+                parant.innerHTML += liTemplateStr;
+            }
+
+            function init() {
+                if (!imgList) {
+                    initVirtualImgs(urls);
+                    imgList = document.getElementsByClassName("list-img");
+                }
+
+                if (imgList) {
+                    // 虚拟img
+                    window.onload = window.onscroll = function (e) {
+                        lazyload(imgList, virtualImgs);
+                    };
+                    // 第二个监听onload的回调
+                    window.addEventListener('load', afterLoad.bind(this), false);
+                }
+            }
+
+            beforeInit();
+            init();
+        })(document);
+    </script>
+</body>
+</html>
