@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录/注册</title>
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_2559506_twq87v9opej.css">
+  <link rel="stylesheet" href="./src/css/main.css">
+</head>
+<body>
+  <div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <!-- signin-form -->
+        <form class="sign-in-form">
+          <h2 class="title">登录平台</h2>
+          <!-- username -->
+          <div class="input-field">
+            <i class="iconfont icon-user"></i>
+            <input type="text" placeholder="账号">
+          </div>
+          <!-- password -->
+          <div class="input-field">
+            <i class="iconfont icon-lock"></i>
+            <input type="password" placeholder="密码">
+          </div>
+          <!-- submit -->
+          <input type="submit" value="登录" class="btn solid">
+          <p class="thirds-login-text">其他第三方登录</p>
+          <!-- thirds -->
+          <div class="thirds">
+            <a href="#" class="third-icon">
+              <i class="iconfont icon-wechat"></i>
+            </a>
+            <a href="#" class="third-icon">
+              <i class="iconfont icon-qq"></i>
+            </a>
+            <a href="#" class="third-icon">
+              <i class="iconfont icon-zhifubao"></i>
+            </a>
+            <a href="#" class="third-icon">
+              <i class="iconfont icon-xiaomi"></i>
+            </a>
+          </div>
+        </form>
+
+        <!-- signup-form -->
+        <form class="sign-up-form">
+          <h2 class="title">马上注册</h2>
+          <!-- username -->
+          <div class="input-field">
+            <i class="iconfont icon-user"></i>
+            <input type="text" placeholder="账号">
+          </div>
+          <!-- email -->
+          <div class="input-field">
+            <i class="iconfont icon-email"></i>
+            <input type="text" placeholder="邮箱">
+          </div>
+          <!-- password -->
+          <div class="input-field">
+            <i class="iconfont icon-lock"></i>
+            <input type="password" placeholder="密码">
+          </div>
+          <!-- submit -->
+          <input type="submit" value="注册" class="btn solid">
+        </form>
+      </div>
+    </div>
+
+    <!-- 切换栏 -->
+    <div class="panels-container">
+      <!-- 左侧提示 -->
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>CSS Transform</h3>
+          <p>Transform字面上就是变形，改变的意思。在CSS3中transform主要包括以下几种：旋转rotate、扭曲skew、缩放scale和移动translate以及矩阵变形matrix。下面我们一起来看看CSS3中transform的旋转rotate、扭曲skew、缩放scale和移动translate具体如何实现，老样子，我们就从transform的语法开始吧。</p>
+          <button class="btn convert" id="sign_up_btn">Sign up</button>
+        </div>
+        <!-- img -->
+        <img src="./src/img/signup.svg" class="image" alt="">
+      </div>
+      <!-- 右侧提示 -->
+      <div class="panel right-panel">
+        <div class="content">
+          <h3>::before ? ::after</h3>
+          <p>CSS样式表的主要作用是修饰Web页面上的HTML标记，但有时候，为了实现某个效果而往页面里反复添加某个HTML标记很繁琐，或者是显得多余，或者是由于某种原因而做不到。这就是CSS伪元素(Pseudo-Element)可以发挥作用的地方，所谓‘伪元素’，就是本身不存在的页面元素，HTML代码里并没有这样的元素，但在页面显示时，你却能看到这些本来不存在的元素发挥着作用。</p>
+          <button class="btn convert" id="sign_in_btn">Sign in</button>
+        </div>
+        <!-- img -->
+        <img src="./src/img/signin.svg" class="image" alt="">
+      </div>
+    </div>
+  </div>
+
+  <!-- script -->
+  <script>
+    ;(function(doc) {
+      const sign_up_btn = doc.querySelector("#sign_up_btn");
+      const sign_in_btn = doc.querySelector("#sign_in_btn");
+      const container = doc.querySelector(".container");
+
+      sign_up_btn.addEventListener("click", ()=> {
+        container.classList.add("signup-up-mode");
+      })
+      sign_in_btn.addEventListener("click", ()=> {
+        container.classList.remove("signup-up-mode");
+      })
+    })(document);
+  </script>
+</body>
+</html>
