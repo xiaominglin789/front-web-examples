@@ -24,3 +24,5 @@
 - [pet-移动端宠物webapp](https://github.com/xiaominglin789/pet)
 
 - [demo-login-1:原生html登录页](https://github.com/xiaominglin789/front-web-examples/tree/master/demo-logon-1)
+
+- [canvas-danmu-chat canvas弹幕功能](https://github.com/xiaominglin789/front-web-examples/tree/master/canvas-danmu-chat)

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>弹幕</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <style>
+    .input-btn {
+      color: #fff;
+      background: linear-gradient(45deg, #016eff 70%, #1296ea);
+      /* 鼠标变小手 */
+      cursor: pointer;
+    }
+    .input-btn.btn_active {
+      color: #bbb;
+      background: #e7e7e7;
+      /* 鼠标变禁止点击状态 */
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <p style="text-align: center;font-size: 16px;">主题 16px 字体大小</p>
+    <div class="container">
+      <div class="content">
+        <video src="./resource/bg.mp4" controls></video>
+      </div>
+      <canvas id="danmu" class="danmu"></canvas>
+      <div class="tool-box">
+        <input type="text" class="input-text">
+        <input type="color" class="input-color">
+        <input type="submit" class="input-btn">
+        <input type="checkbox" class="input-open" checked="checked">
+      </div>
+    </div>
+  </div>
+  <!-- script -->
+  <script src="./js/index.js"></script>
+</body>
+</html>
