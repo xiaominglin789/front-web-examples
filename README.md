@@ -27,5 +27,7 @@
 
 - [canvas-danmu-chat canvas弹幕功能](https://github.com/xiaominglin789/front-web-examples/tree/master/canvas-danmu-chat)
 
-- [pay-demo 支付宝沙箱支付-前/后端](https://github.com/xiaominglin789/front-web-examples/tree/master/pay-demo)
+- [pay-demo 支付宝沙箱支付-后端](https://github.com/xiaominglin789/front-web-examples/tree/master/pay-demo)
+
+- [pay-demo 支付宝沙箱支付-前端](https://github.com/xiaominglin789/front-web-examples/tree/master/pay-demo-front)
 

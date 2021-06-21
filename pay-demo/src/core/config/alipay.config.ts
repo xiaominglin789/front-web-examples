@@ -1,8 +1,6 @@
-import AlipaySdk, { AlipaySdkConfig } from 'alipay-sdk';
-
-/** 支付宝沙箱配置 */
-const alipayConfig: AlipaySdkConfig = {
-  /** 应用ID */
+export default () => ({
+  alipayConfig: {
+    /** 应用ID */
   appId: process.env.ALIPAY_APPID,
   /** 支付宝公钥（需要对返回值做验签时候必填） */
   alipayPublicKey: process.env.ALIPAY_PUBLICKEY,
@@ -16,6 +14,5 @@ const alipayConfig: AlipaySdkConfig = {
   signType: 'RSA2',
   /** 驼峰 */
   camelcase: Boolean(process.env.ALIPAY_CAMELCASE),
-}
-
-export const AppAlipaySdk = new AlipaySdk(alipayConfig);
+  }
+});

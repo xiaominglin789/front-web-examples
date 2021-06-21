@@ -1,3 +1,3 @@
 export class PayDTO {
-  code: string
+  orderId: string
 }

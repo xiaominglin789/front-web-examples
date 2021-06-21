@@ -1,17 +1,25 @@
-import { EntityRepository, Repository } from "typeorm";
+import { HttpException } from "@nestjs/common";
+import { EntityRepository, getConnection, Repository } from "typeorm";
 import { v4 as uuid } from 'uuid';
 import { Order } from "../entity/order.entity";
+import { OrderDetail } from "../entity/orderDetail.entity";
 import { OrderInterface, OrdersInterface } from "../interface/order.interface";
 
 @EntityRepository(Order)
 export class OrderRepository extends Repository<Order> {
   
   /** 生成新订单 */
-  async createNewOrder(): Promise<OrderInterface> {
+  async createNewOrder(orderDetail: OrderDetail): Promise<OrderInterface> {
+    if (!orderDetail) {
+      throw new HttpException("服务器异常", 500);
+    }
+
     try {
       const order = new Order();
       
-      order.code = uuid();
+      order.orderId = uuid();
+      
+      order.orderDetail = orderDetail;
 
       const res = await this.save(order);
 
