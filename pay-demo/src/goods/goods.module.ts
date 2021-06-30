@@ -7,7 +7,7 @@ import { GoodsService } from './goods.service';
 @Module({
   imports: [
     TypeOrmModule.forFeature([
-      GoodRepository
+      GoodRepository,
     ])
   ],
   controllers: [GoodsController],

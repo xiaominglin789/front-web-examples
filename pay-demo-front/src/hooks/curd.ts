@@ -2,16 +2,24 @@ import { reactive, ref } from "vue";
 
 export function useCardStore() {
   const state = reactive({
-    goods: Array<{ id: number, good: object }>(),
+    /** map(id, num) => 选择的id,数量 */
+    selectGoods: new Map<number, number>()
   });
 
   /** 商品加入购物车 */
   const addToCard = async(id: number) => {
-    if (!Object.keys(state.goods).includes(String(id))) {
-
+    if (_existenceById(id)) {
+      // 没有记录,添加新纪录
     } else {
-
+      // 有记录增加数量
     }
+  }
+
+  /** 根据id查看是否存在记录 */
+  const _existenceById = (id: number) => {
+    let ids = state.selectGoods.keys();
+    console.log("已有ids:", ids, " 传入 id: ", id);
+    return [...ids].includes(id);
   }
 
   /** 去支付 */

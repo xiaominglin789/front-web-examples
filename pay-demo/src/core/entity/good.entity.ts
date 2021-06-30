@@ -20,7 +20,4 @@ export class Good extends AppBaseEntity {
   
   @Column({  name: "preset_price", nullable: true, comment: "预定价格" })
   presetPrice: string;
-
-  @ManyToMany(type => Order, order => order.orderId)
-  roders: Order[];
 }

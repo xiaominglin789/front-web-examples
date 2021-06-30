@@ -18,8 +18,4 @@ export class Order extends AppBaseEntity {
   @OneToOne(type => OrderDetail, orderDetail => orderDetail.id)
   @JoinColumn({name: 'order_detail'})
   orderDetail: OrderDetail;
-
-  @ManyToMany(type => Good, good => good.id)
-  @JoinTable({ name: "order_good", joinColumn: { name: "order_id" }, inverseJoinColumn: { name: "good_id" } })
-  goods: Good[];
 }

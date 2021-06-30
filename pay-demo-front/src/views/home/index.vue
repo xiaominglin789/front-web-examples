@@ -20,7 +20,7 @@
               <span class="good-real-price">￥{{ good.realPrice }}</span>
               <span class="good-preset-price">￥{{ good.presetPrice }}</span>
             </p>
-            <button @click="onPresetAddToCard()">猫咪想吃</button>
+            <button @click="onPresetAddToCard(good)">猫咪想吃</button>
           </div>
         </li>
       </ul>
@@ -29,14 +29,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, onMounted, inject, ref } from 'vue';
 import { useRouter } from "vue-router";
+import { getAllGoods } from "../../api/pay.api";
+import { useCardStore } from "../../hooks/curd";
+import type { GoodType } from "../../utils/interface/good";
 
 export default defineComponent({
   name: 'Home',
   setup() {
     const router = useRouter();
-    const goods = [
+    const goodsOld = [
       {
         id: 1,
         entryImg: "https://picsum.photos/200/200?random=1",
@@ -102,22 +105,34 @@ export default defineComponent({
         presetPrice: "18.9"
       }
     ];
-    
+    const goods = ref<GoodType[]>() as unknown as GoodType[];
+    const cardStore = inject("cardStore") as ReturnType<typeof useCardStore>;
+
+    onMounted(async () => {
+      const result: any = await getAllGoods();
+      console.log(result);
+      if (result) {
+        goods.values = result;
+      }
+    })
+
+    // 跳转到历史订单列表页面
     const onRouteToHistory = () => {
       router.push({ path: "/order" });
     }
+    // 跳转到购物车页面
     const onRouteToCard = () => {
       router.push({ path: "/card" });
     }
-    const onPresetAddToCard = () => {
-      // 预置加入购物车
+    // 预置加入购物车
+    const onPresetAddToCard = (good: GoodType) => {
     }
     
     return {
       onRouteToHistory,
       onRouteToCard,
       onPresetAddToCard,
-      goods
+      goods,
     }
   }
 })
