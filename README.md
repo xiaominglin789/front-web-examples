@@ -31,3 +31,6 @@
 
 - [pay-demo 支付宝沙箱支付-前端](https://github.com/xiaominglin789/front-web-examples/tree/master/pay-demo-front)
 
+- [echarts-demo 可视化练习](https://github.com/xiaominglin789/front-web-examples/tree/master/echarts-demo)
+
+

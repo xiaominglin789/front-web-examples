@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echarts 5 练习一</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <h3 style="width: 480px; text-align: center;">图表呈现</h3>
+    <div class="charts-1" style="width:480px;height:360px;"></div>
+  </div>
+
+  <!-- 库 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.common.min.js">
+  </script>
+  <!-- 业务 -->
+
+  <script>
+    /**
+      - 1.引入`echarts.js`: `npm install echarts` 或 cdn
+      - 2.准备一个呈现图表的`标签盒子`
+      - 3.初始化echarts的实例对象
+      - 4.准备配置项 -> echarts实例 
+     */
+    const chartsDom_1 = document.querySelector('.charts-1');
+    const ECharts = chartsDom_1 && echarts.init(chartsDom_1);
+    const echartsOptions = {
+      title: {
+        text: '成绩',
+        x: 'center'
+      },
+      xAxis: {
+        type: 'category',
+        data: ['小明','小红','小王']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          name: '语文',
+          type: 'bar',
+          data: [89,65,72]
+        },
+      ]
+    };
+
+    ECharts.setOption(echartsOptions);
+  </script>
+</body>
+</html>

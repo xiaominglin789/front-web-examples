@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echarts 5 常用配置</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <h3 style="width: 480px; text-align: center;">图表呈现</h3>
+    <p>title标题, color图表颜色, xAxis水平轴, yAxis垂直轴, tooltip鼠标选中提示,series系列列表数据</p>
+    <div class="charts-1" style="width:560px;height:360px;"></div>
+  </div>
+
+  <!-- 库 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.common.min.js">
+  </script>
+  <!-- 业务 -->
+
+  <script>
+    /**
+      - 1.引入`echarts.js`: `npm install echarts` 或 cdn
+      - 2.准备一个呈现图表的`标签盒子`
+      - 3.初始化echarts的实例对象
+      - 4.准备配置项 -> echarts实例 
+     */
+    const chartsDom_1 = document.querySelector('.charts-1');
+    const ECharts = chartsDom_1 && echarts.init(chartsDom_1);
+    const echartsOptions = {
+      color: ['red', 'green'],
+      toolbox: {
+        feature: {
+          saveAsImage: {
+            title: '导出图片',
+          },
+          dataView: {},
+          magicType: {
+            type: ['line', 'bar', 'stack']
+          },
+          dataZoom: {},
+          restore: {}
+        }
+      },
+      tooltip: {
+        trigger: "item",
+        triggerOn: "mousemove",
+        // formatter: function(value) {
+        //   // 可以根据 value 自定义提示信息
+        //   return value.name + value.seriesName + ': ' + value.value;
+        // },
+        axisPointer: {
+          type: "shadow"
+        }
+      },
+      title: {
+        text: '成绩表',
+        // subtext: '学生成绩表',
+        link: 'https://www.baidu.com',
+        left: 'left',
+        textStyle: {
+          fontSize: 20,
+          color: 'red'
+        },
+        borderWidth: 3,
+        borderColor: '#eee',
+        borderRadius: 4
+      },
+      xAxis: {
+        type: 'category',
+        show: true,
+        data: ['小明','小红','小王']
+      },
+      yAxis: {
+        name: '分数',
+        type: 'value',
+        show: true
+      },
+      legend: {},
+      series: [
+        // 红色的
+        {
+          name: '语文',
+          type: 'bar',
+          text: '语文',
+          data: [89,65,72],
+          markPoint: {
+            data: [
+              {
+                type: 'min',
+                name: '最小值',
+              },
+              {
+                type: 'max',
+                name: '最大值'
+              },
+            ]
+          },
+          markLine: {
+            data: [
+              {
+                type: 'average',
+                name: '平均成绩',
+              }
+            ]
+          },
+          label: {
+            show: true,
+            rotate: 0,
+            color: '#fff'
+          }
+        },
+        // 绿色的
+        {
+          name: '数学',
+          type: 'bar',
+          data: [66,35,92],
+          label: {
+            show: true
+          },
+          markPoint: {
+            data: [
+            {
+              type: 'max',
+            },
+            {
+              type: 'min',
+            }
+          ]},
+          markLine: {
+            data: [
+              {
+                type: 'average'
+              }
+            ]
+          }
+        },
+      ]
+    };
+
+    ECharts.setOption(echartsOptions);
+  </script>
+</body>
+</html>
