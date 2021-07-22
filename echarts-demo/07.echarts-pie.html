@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echarts图表: pie</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <h3 style="width: 480px; text-align: center;">图表呈现</h3>
+    <div class="charts-pie" style="width:560px;height:360px;"></div>
+  </div>
+
+  <!-- 库 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.common.min.js">
+  </script>
+  <!-- 业务 -->
+
+  <script>
+    const charts_pie = document.querySelector('.charts-pie');
+    const ECharts = charts_pie && echarts.init(charts_pie);
+
+    const pieData = [
+      { name: '淘宝', value: 11231 },
+      { name: '京东', value: 23673 },
+      { name: '唯品会', value: 6231 },
+      { name: '1号店', value: 8986 },
+      { name: '聚美优品', value: 6700 },
+    ];
+
+    const echartsOptions = {
+      title: {
+        text: '小红网购平台消费情况',
+      },
+      tooltip: {
+        type: 'item'
+      },
+      legend: {
+        right: 0
+      },
+      series: [
+        {
+          name: '小红网购平台消费情况',
+          type: 'pie',
+          data: pieData,
+          label: {
+            show: true,
+            formatter: function(arg) {
+              console.log(arg);
+              return arg['name'] + ': ' + arg['value'] + '元 ' + arg['percent'] + '%';
+            }
+          },
+          radius: ['25%', '50%'], // 25% -> 内圆半径, 50% -> 外圆半径
+          // roseType: 'radius', // 根据区域占比, 每块区域的半径都同
+          selectedMode: "single",
+          selectedOffset: 30
+        }
+      ]
+    };
+
+    ECharts.setOption(echartsOptions);
+  </script>
+</body>
+</html>
+<!DOCTYPE html>

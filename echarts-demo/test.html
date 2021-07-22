@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <p>散点图</p>
+      <div class="scatter" style="width: 720px; height: 360px"></div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.common.min.js"></script>
+    <script>
+      let myEchart = echarts.init(document.querySelector(".scatter"))
+      let data = {h:161,w:51}
+      let xdata = []
+      for(var i = 0; i< 500; i++){
+          let h = data.h + Math.random()*i/10
+          let w = data.w + Math.random()*i/10
+          xdata.push([w,h])
+      }
+      console.log(xdata)
+      let option = {
+          xAxis:{
+              type:'value',
+              scale: true
+          },
+          yAxis:{
+              type:'value',
+              scale: true
+          },
+          series:[{
+              type:'scatter',
+              data:xdata,  // 二维数组 [[身高1，体重1],[身高2，体重2], ...]
+          }]
+      }
+      myEchart.setOption(option)
+    </script>
+  </body>
+</html>

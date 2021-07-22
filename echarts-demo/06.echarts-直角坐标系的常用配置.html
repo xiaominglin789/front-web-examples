@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bar、line、scatter 直角坐标系的图表的常用配置</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <h3 style="width: 480px; text-align: center;">直角坐标系的图表的常用配置</h3>
+    <h5>配置: grid   网格,控制图表的样式</h5>
+    <p>x轴 和 y轴 就是在 grid 的基础上绘制的</p>
+    <pre>
+      grid: {
+        show: true | false, // 控制网格显示
+        borderColor: 'red', // 边框颜色
+        top: 20 | '20%',    // 控制图表相对位置偏移
+        left: '15%',        
+        width: 500,         // 控制图表大小
+        height: 250
+      }
+    </pre>
+    <hr>
+
+    <h5>配置: axis   坐标轴,</h5>
+    <p>直角坐标系: x轴 、 y轴</p>
+    <pre>
+      # xAxis x轴
+      xAxis: {
+        type: 'value' | 'category',   // value: 数值, category: 分类
+        scale: true | false,          // scale: 控制开启 脱离0值比例
+        position: 'top' | 'bottom',   // position: 控制x轴的显示位置，只有2个值
+      }
+
+      # yAxis y轴
+      xAxis: {
+        type: 'value',                // value: 数值
+        scale: true | false,          // scale: 控制开启 脱离0值比例
+        position: 'left' | 'right',   // position: 控制y轴的显示位置，只有2个值
+      }
+    </pre>
+    <hr>
+
+    <h3>配置: dataZoom 区域缩放</h3>
+    <p>dataZoom 用于区域缩放,对数据范围过滤,x轴、y轴都可以拥有</p>
+    <p>dataZoom 是一个数组,意味着 可以配置多个区域缩放</p>
+    <pre>
+      dataZoom: [
+        {
+          type: 'slider' | 'inside',  // 类型, 'slider':滑块选择, 'inside': 内置,依靠鼠标滚轮或双指缩放
+          xAxisIndex: 0,              // xAxisIndex: 0, 指明x轴
+        },
+        {
+          type: 'slider' | 'inside',  // 类型, 'slider':滑块选择, 'inside': 内置,依靠鼠标滚轮或双指缩放
+          yAxisIndex: 0,              // yAxisIndex: 0, 指明y轴
+          start: 0,                   // 指定缩放的最小起点值
+          end: 120,                   // 指定缩放的最大结束值
+        }
+      ]
+    </pre>
+  </div>
+
+  <!-- 库 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.common.min.js">
+  </script>
+  <!-- 业务 -->
+
+  <script>
+    const charts_pie = document.querySelector('.charts-pie');
+    const ECharts = charts_line && echarts.init(charts_pie);
+
+    const echartsOptions = {};
+
+    ECharts.setOption(echartsOptions);
+  </script>
+</body>
+</html>
+<!DOCTYPE html>

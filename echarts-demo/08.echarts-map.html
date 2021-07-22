@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echarts图表: map</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <h3 style="width: 600px; text-align: center;">图表呈现</h3>
+    <div class="charts-map"></div>
+  </div>
+
+  <!-- 库 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.common.min.js">
+  </script>
+  
+  <!-- 业务 -->
+  <script>
+    const charts_map = document.querySelector('.charts-map');
+    const ECharts = charts_map && echarts.init(charts_map);
+
+    const echartsOptions = {};
+
+    ECharts.setOption(echartsOptions);
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
