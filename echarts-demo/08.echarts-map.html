@@ -14,17 +14,53 @@
   </div>
 
   <!-- 库 -->
-  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.common.min.js">
-  </script>
-  
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.common.min.js"></script>-->
+  <script src="./echarts.min.js"></script>
   <!-- 业务 -->
   <script>
-    const charts_map = document.querySelector('.charts-map');
-    const ECharts = charts_map && echarts.init(charts_map);
+    var requestMapData = (url) => {
+      return new Promise((resolve, reject) => {
+        if (!url) reject('参数为空');
 
-    const echartsOptions = {};
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) {
+            if (xhr.status.toString().startsWith('2')) {
+              resolve(JSON.parse(xhr.responseText));
+            } else {
+              // 400/500
+              console.log('not status 200');
+            }
+          }
+        }
+        xhr.send();
+      })
+    }
+  </script>
 
-    ECharts.setOption(echartsOptions);
+  <script>
+    requestMapData('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json').then(mapData => {
+      console.log(mapData);
+
+      const charts_map = document.querySelector('.charts-map');
+      const EchartApp = charts_map && echarts.init(charts_map);
+      
+      const options = {
+        geo: {
+          type: 'map',
+          
+        },
+        series: [
+          {
+            type: 'map',
+            data: mapData
+          }
+        ]  
+      };
+
+      EchartApp.setOption(options);
+    }).catch(err=>console.log(err));
   </script>
 </body>
 </html>

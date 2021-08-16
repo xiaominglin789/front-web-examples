@@ -14,8 +14,9 @@
   </div>
 
   <!-- 库 -->
-  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.common.min.js">
-  </script>
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.common.min.js">
+  </script> -->
+  <script src="./echarts.min.js"></script>
   <!-- 业务 -->
 
   <script>
@@ -74,11 +75,28 @@
             color: 'green',
             type: 'dotted'
           },
-          smooth: true,
+          smooth: false,
+          areaStyle: {
+            color: {
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [
+                {
+                  offset: 0,
+                  color: "#dc3881" // 0% 处的颜色
+                },
+                {
+                  offset: 1,
+                  color: "rgba(220,56,129,0)" // 100% 处的颜色
+                }
+              ],
+            }
+          }
         },
       ]
     };
-
     ECharts.setOption(echartsOptions);
   </script>
 </body>
