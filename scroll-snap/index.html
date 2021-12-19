@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 滚动</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
+  <style>
+    .app {
+      /*
+      mandatory: 鼠标滚动后会触发展示下一页
+      proximity: 鼠标滚动快要到下一页才自动滚动到下一页
+      scroll-padding: 设置滚动的间距 top|right|botton|left
+      */
+      scroll-padding-top: 24px;
+      scroll-snap-type: y mandatory;
+      overflow: scroll;
+      height: 100vh;
+    }
+    
+    section {
+      width: 100vw;
+      height: 100vh;
+      scroll-snap-align: start;
+      color: #fff;
+    }
+    .page-0 ul::-webkit-scrollbar {
+      display: none !important;
+      width: 0px;
+      height: 0px;
+    }
+    .page-0 ul {
+      box-sizing: border-box;
+      scroll-snap-type: y mandatory;
+      overflow: scroll;
+      width: 250px;
+      height: 150px;
+      border: 1px solid orange;
+    }
+    .page-0 ul li {
+      width: 250px;
+      height: 150px;
+      scroll-snap-align: center;
+      color: #999;
+      border-bottom: 1px solid red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .page-0 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #999;
+    }
+    .page-1 { 
+      background-color: rgb(206, 199, 199);
+    }
+    .page-2 { 
+      background-color: rgb(83, 78, 78); 
+    }
+    .page-3 { 
+      background-color: rgb(143, 120, 120); 
+    }
+    .page-4 { 
+      background-color: rgb(78, 92, 70); 
+    }
+    .page-5 { 
+      background-color: rgb(67, 241, 174); 
+    }
+    .title {
+      height: 24px;
+      line-height: 24px;
+      position: sticky;
+      top: 0;
+      color: red;
+      border-bottom: 1px solid #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h3 class="title">页面通过鼠标滚动实现滚动贴合特效</h3>
+    <section class="page-0">
+      <span>页面内局部滚动 </span>
+      <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>c</li>
+      </ul>
+    </section>
+    <section class="page-1">页面-1</section>
+    <section class="page-2">页面-2</section>
+    <section class="page-3">页面-3</section>
+    <section class="page-4">页面-4</section>
+    <section class="page-5">页面-5</section>
+  </div>
+</body>
+</html>

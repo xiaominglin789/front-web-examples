@@ -1,31 +1,32 @@
 # front-web-examples
+
 前端开发案例集合
 
 - [vue2-购物车](https://github.com/xiaominglin789/front-web-examples/tree/master/demo-card-vue2)
 
-- [vue2-todo应用](https://github.com/xiaominglin789/front-web-examples/tree/master/todo2-list)
+- [vue2-todo 应用](https://github.com/xiaominglin789/front-web-examples/tree/master/todo2-list)
 
-- [vue3-todo应用](https://github.com/xiaominglin789/front-web-examples/tree/master/todo3-list)
+- [vue3-todo 应用](https://github.com/xiaominglin789/front-web-examples/tree/master/todo3-list)
 
-- [todo-app(vue3-todo清单列表)](https://github.com/xiaominglin789/front-web-examples/tree/master/todo-app)
+- [todo-app(vue3-todo 清单列表)](https://github.com/xiaominglin789/front-web-examples/tree/master/todo-app)
 
-- [todo-list(vue3-todo样式更丰富)](https://github.com/xiaominglin789/todo-vue3)
+- [todo-list(vue3-todo 样式更丰富)](https://github.com/xiaominglin789/todo-vue3)
 
-- [react-hooks-todo应用](https://github.com/xiaominglin789/front-web-examples/tree/master/react-hooks-todo)
+- [react-hooks-todo 应用](https://github.com/xiaominglin789/front-web-examples/tree/master/react-hooks-todo)
 
 - [防抖/节流](https://github.com/xiaominglin789/front-web-examples/tree/master/demo-throtte-debounce)
 
-- [image-lazyload图片懒加载](https://github.com/xiaominglin789/front-web-examples/tree/master/image-lazyload)
+- [image-lazyload 图片懒加载](https://github.com/xiaominglin789/front-web-examples/tree/master/image-lazyload)
 
 - [waterfall-瀑布流实现](https://github.com/xiaominglin789/front-web-examples/tree/master/waterfall)
 
-- [demo-news新闻资讯webapp(纯原生js开发)](https://github.com/xiaominglin789/demo-news)
+- [demo-news 新闻资讯 webapp(纯原生 js 开发)](https://github.com/xiaominglin789/demo-news)
 
-- [pet-移动端宠物webapp](https://github.com/xiaominglin789/pet)
+- [pet-移动端宠物 webapp](https://github.com/xiaominglin789/pet)
 
-- [demo-login-1:原生html登录页](https://github.com/xiaominglin789/front-web-examples/tree/master/demo-logon-1)
+- [demo-login-1:原生 html 登录页](https://github.com/xiaominglin789/front-web-examples/tree/master/demo-logon-1)
 
-- [canvas-danmu-chat canvas弹幕功能](https://github.com/xiaominglin789/front-web-examples/tree/master/canvas-danmu-chat)
+- [canvas-danmu-chat canvas 弹幕功能](https://github.com/xiaominglin789/front-web-examples/tree/master/canvas-danmu-chat)
 
 - [pay-demo 支付宝沙箱支付-后端](https://github.com/xiaominglin789/front-web-examples/tree/master/pay-demo)
 
@@ -33,4 +34,4 @@
 
 - [echarts-demo 可视化练习](https://github.com/xiaominglin789/front-web-examples/tree/master/echarts-demo)
 
-
+- [css-scroll-snap 滚动特效](https://github.com/xiaominglin789/front-web-examples/tree/master/scroll-snap)
