@@ -35,3 +35,5 @@
 - [echarts-demo 可视化练习](https://github.com/xiaominglin789/front-web-examples/tree/master/echarts-demo)
 
 - [css-scroll-snap 滚动特效](https://github.com/xiaominglin789/front-web-examples/tree/master/scroll-snap)
+
+- [css-draw-triangle 绘制三角形](https://github.com/xiaominglin789/front-web-examples/tree/master/css-draw-triangle)

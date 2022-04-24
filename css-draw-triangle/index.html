@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css绘制三角形</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html,body {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+    .flex-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #app {
+      width: 500px;
+      height: 500px;
+      /* box-shadow: 0 0 8px 2px grey; */
+    }
+    .m-r-20 {
+      margin-right: 20px;
+    }
+    .triangle {
+      width: 0;
+      height: 0;
+      border-top: 30px solid green;
+      border-right: 30px solid orange;
+      border-bottom: 30px solid blue;
+      border-left: 30px solid grey;
+    }
+    .triangle.top { border-top-color: transparent; border-right-color: transparent; border-left-color: transparent; }
+    .triangle.right { border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent; }
+    .triangle.bottom { border-bottom-color: transparent; border-right-color: transparent; border-left-color: transparent; }
+    .triangle.left { border-top-color: transparent; border-bottom-color: transparent; border-left-color: transparent; }
+    /* 实现方式2 */
+    .triangle-2 {
+      border: 30px solid transparent;
+      border-bottom-color: red;
+    }
+  </style>
+</head>
+
+<body class="flex-center">
+  <div id="app" class="flex-center">
+    <div class="triangle m-r-20"></div>
+    <div class="triangle top m-r-20"></div>
+    <div class="triangle right m-r-20"></div>
+    <div class="triangle bottom m-r-20"></div>
+    <div class="triangle left m-r-20"></div>
+    <div class="triangle-2"></div>
+  </div>
+
+  <!-- 
+  绘制三角形
+  思路: 
+    1.通过边框, border(边框): 上右下左的线组成  
+      border = border-top + border-right + border-bottom + border-left
+    2.通过控制哪边的边框透明来实现效果
+      主要点:
+        三角形不设置宽高,即为: 0 
+        三角形的其他边框色设置未透明: transparent
+   -->
+</body>
+</html>
