@@ -13,7 +13,7 @@
     }
     html,body {
       width: 100vw;
-      min-height: 100vh;
+      height: 100vh;
     }
     #app {
       width: 100%;
@@ -29,7 +29,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, 50%);
+      transform: translate(-50%, -50%);
     }
     .news-header {
       width: 100%;
@@ -46,6 +46,7 @@
       font-size: 12px;
       color: blue;
       cursor: pointer;
+      padding-right: 10px;
     }
     .news-content {
       list-style: none;
@@ -62,6 +63,9 @@
     .news-item a:hover {
       color: blue;
       text-decoration: underline;
+    }
+    .news-item span { 
+      color: #666;
     }
     .news-item:nth-child(1) span {
       color: red;
