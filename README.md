@@ -39,3 +39,5 @@
 - [css-draw-triangle 绘制三角形](https://github.com/xiaominglin789/front-web-examples/tree/master/css-draw-triangle)
 
 - [new-list 新闻列表](https://github.com/xiaominglin789/front-web-examples/tree/master/new-list)
+
+- [css-eat-beans 吃豆豆效果](https://github.com/xiaominglin789/front-web-examples/tree/master/css-eat-beans)
