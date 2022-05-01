@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品简单展示</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    html,body {
+      width: 100vw;
+      height: 100vh;
+      min-height: 100vh;
+    }
+    a {
+      text-decoration: none;
+      display: inline-block;
+    }
+    .m-t-10 { margin-top: 10px }
+    .m-t-16 { margin-top: 16px }
+    /* 内容 */
+    #app {
+      width: 100%;
+      height: 100%;
+    }
+    .products {
+      width: 100%;
+      position: relative;
+    }
+    .product-box {
+      width: 250px;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      text-align: center;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .show-img img {
+      width: 60%;
+    }
+    .show-img .tip {
+      font-size: 12px;
+      color: #8a8a8a;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .show-img:hover img {
+      transform: translateY(-2px);
+    }
+    .product-box .des {
+      width: 100%;
+      background-color: #ececec;
+      padding: 8px;
+    }
+    /** tag的父容器 */
+    .des .tag-box {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      /* gap: 8px; */
+    }
+    .tag {
+      margin-right: 8px;
+      margin-top: 4px;
+      padding: 4px;
+      border: 1px solid rgb(0, 153, 255);
+      display: inline-block;
+      background: #fff;
+      font-size: 12px;
+      border-radius: 4px;
+      color: rgb(0, 153, 255);
+    }
+    .tag-live {
+      color: #fff;
+      background: 
+        linear-gradient(to right, rgba(219, 127, 111, 0.6), rgba(202, 4, 241, 0.6));
+      border-color: rgb(247, 206, 255);
+    }
+    .tag-preference {
+      color: orange;
+      border-color: initial;
+    }
+    /* des */
+    .des .title {
+      font-size: 18px;
+      color: #555555;
+      cursor: text;
+    }
+    .product-box {
+      font-size: 14px;
+    }
+    .product-box .unit {
+      font-size: 20px;
+      color: #333;
+    }
+    .price-box .price {
+      font-size: 18px;
+      color: rgb(255, 94, 94);
+    }
+    .product-box .fix {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="products">
+      <div class="product-box">
+        <a href="//github.com/xiaominglin789/front-web-examples" target="_blank">
+          <div class="show-img">
+            <img src="./image/product.png" alt="product">
+            <p class="tip m-t-10">甲基丙烯酸 现货优惠</p>
+          </div>
+          <div class="des m-t-16">
+            <div class="tag-box">
+              <span class="tag tag-live">直播中</span>
+              <span class="tag tag-preference">优惠</span>
+              <span class="tag">30天保价</span>
+              <span class="tag">售后免邮</span>
+            </div>
+            <p class="title m-t-10">甲基丙烯酸</p>
+            <span class="price-box">
+              <span class="unit">￥</span>
+              <span class="price">589.00</span>
+              <span class="fix">元/桶</span>
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
