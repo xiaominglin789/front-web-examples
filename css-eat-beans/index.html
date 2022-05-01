@@ -47,20 +47,11 @@
       width: 100%;
       background-color: antiquewhite;
     }
-    .eat-beans::after {
-      width: 100%;
-      height: 1px;
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      background-color: rgb(184, 181, 181);
-    }
     .eat-beans .head {
       width: 200px;
       height: 200px;
       position: relative;
-      z-index: 99;
+      z-index: 100;
       border-radius: 50%;
       overflow: hidden;
     }
@@ -72,7 +63,7 @@
       background-color: orange;
       transform-origin: bottom center;
       transform: rotate(-30deg);
-      animation: eat-up-effect 0.6s ease infinite alternate;
+      animation: eat-up-effect .5s ease infinite alternate;
     }
     .eat-beans .head::after {
       content: '';
@@ -82,7 +73,7 @@
       background-color: orange;
       transform-origin: top center;
       transform: rotate(30deg);
-      animation: eat-down-effect 0.6s ease infinite alternate;
+      animation: eat-down-effect .5s ease infinite alternate;
     }
     .head .eye {
       width: 20px;
@@ -99,17 +90,18 @@
       height: 40px;
       border-radius: 50%;
       background-color: orange;
+      opacity: .9;
       position: absolute;
       top: 50%;
-      left: 25%;
+      left: 125px;
       z-index: 98;
       margin-top: -20px;
       box-shadow:
-        60px 0 0 orange,
-        120px 0 0 orange,
-        180px 0 0 orange,
-        240px 0 0 orange;
-      animation: move 1.2s ease infinite;
+        70px 0 0 orange,
+        140px 0 0 orange,
+        210px 0 0 orange,
+        280px 0 0 orange;
+      animation: move 1s ease infinite;
     }
     @keyframes eat-up-effect {
       0% {
@@ -132,7 +124,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(-64px);
+        transform: translateX(-60px);
       }
     }
   </style>
@@ -140,6 +132,9 @@
 <body>
   <div id="app">
     <div class="section flex-center">
+      <!-- box-shadow: 水平偏移 垂直偏移 羽化度 样式 -->
+      <!-- animation: eat-down-effect 0.6s        ease     infinite alternate; -->
+      <!-- animation: 帧动画名         动画持续时间 过渡类型 一直执行  回到第一帧 -->
       <!-- 绘制头,眼,球: border, rotate, box-shadow, @keyframe -->
       <div class="eat-beans">
         <div class="head">
