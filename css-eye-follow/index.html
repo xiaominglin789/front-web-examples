@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css-眼睛跟随</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    html,body {
+      width: 100vw;
+      height: 100vh;
+    }
+    #app {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(10deg, #f55959, #1084f1);
+    }
+    .face {
+      width: 200px;
+      height: 200px;
+      border: 1px solid initial;
+      background-color: orange;
+      border-radius: 50%;
+      position: relative;
+    }
+    .face::before {
+      content: "";
+      width: 72px;
+      height: 36px;
+      border-bottom-left-radius: 36px;
+      border-bottom-right-radius: 36px;
+      transition: .5s;
+      position: absolute;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      background: #b57700;
+    }
+    .face:hover::before {
+      width: 80px;
+      height: 14px;
+      bottom: 32px;
+      border-radius: 4px;
+    }
+    .eyes {
+      width: 100%;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: relative;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .eyes .eye {
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      border-radius: 50%;
+      position: relative;
+    }
+    .eyes .eye::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background: #000;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="face">
+      <div class="eyes">
+        <div class="eye"></div>
+        <div class="eye"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector("body").addEventListener("mousemove", (e) => setTimeout(handleMove.bind(null, e), 200))
+
+    function handleMove(event) {
+      const eyes = document.querySelectorAll(".eye")
+      Array.from(eyes).forEach(eye => {
+        let x = eye.getBoundingClientRect().left + eye.clientWidth / 2
+        let y = eye.getBoundingClientRect().top + eye.clientHeight / 2
+        // 三角函数
+        let radian = Math.atan2(event.pageX - x, event.pageY - y)
+        // 计算旋转角度
+        let rot = (radian * (180 / Math.PI) * -1) + 0;
+        eye.style.transform = `rotate(${rot}deg)`
+      });
+    }
+  </script>
+</body>
+</html>

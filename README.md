@@ -43,3 +43,5 @@
 - [css-eat-beans 吃豆豆效果](https://github.com/xiaominglin789/front-web-examples/tree/master/css-eat-beans)
 
 - [product-easy-show 产品简单展示效果](https://github.com/xiaominglin789/front-web-examples/tree/master/product-easy-show)
+
+- [css-eye-follow css眼睛跟随效果](https://github.com/xiaominglin789/front-web-examples/tree/master/css-eye-follow)
